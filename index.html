@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hangout Cafe · Modern hangout in Solapur</title>
+  <!-- Font Awesome 6 (free) for icons & social -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Font for clean typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    /* CHOCOLATE BROWN + WHITE theme */
+    body {
+      background: #ffffff;
+      color: #2d2d2d;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+    :root {
+      --primary: #4B2E2B;        /* Chocolate Brown */
+      --primary-light: #7B4A3A;  /* Light Chocolate Brown */
+      --primary-soft: #F5E6E0;   /* Soft Chocolate Background */
+      --accent-cream: #EED9C4;   /* Cream Accent */
+      --accent-gold: #D4A373;    /* Soft Gold Accent */
+      --white: #ffffff;
+      --gray-bg: #fafafa;
+      --text-dark: #2d2d2d;
+      --whatsapp: #25D366;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    /* header */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      flex-wrap: wrap;
+      background: var(--white);
+      border-bottom: 2px solid var(--primary-soft);
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary);
+    }
+    /* cafe name text removed – only logo remains */
+    .nav-menu {
+      display: flex;
+      gap: 32px;
+      font-weight: 500;
+    }
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: 0.2s;
+      font-size: 1.05rem;
+    }
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+    .header-actions {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .call-btn, .insta-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-soft);
+      padding: 8px 16px;
+      border-radius: 40px;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: 0.2s;
+      border: 1px solid transparent;
+    }
+    .call-btn i, .insta-header i {
+      font-size: 1.2rem;
+    }
+    .call-btn:hover, .insta-header:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    /* hero */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      padding: 48px 0 56px;
+    }
+    .hero-content {
+      flex: 1 1 350px;
+    }
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #4B2E2B 0%, #A5673F 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-content p {
+      font-size: 1.3rem;
+      color: #4a4a5a;
+      margin: 20px 0 28px;
+      max-width: 550px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      padding: 14px 38px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 12px 28px rgba(75, 46, 43, 0.3);
+      transition: 0.2s;
+      border: none;
+    }
+    .btn-primary i {
+      font-size: 1.2rem;
+    }
+    .btn-primary:hover {
+      background: var(--primary-light);
+      transform: translateY(-3px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 12px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-outline:hover {
+      background: var(--primary-soft);
+    }
+    .hero-image {
+      flex: 1 1 350px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 40px 40px 40px 0;
+      box-shadow: 0 30px 40px -20px rgba(0,0,0,0.3);
+      border: 5px solid white;
+      outline: 2px solid var(--accent-cream);
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+    }
+
+    /* popular items – WITHOUT names */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 70%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-cream), var(--accent-gold));
+      border-radius: 4px;
+    }
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 28px;
+      margin: 48px 0;
+    }
+    .food-card {
+      background: white;
+      border-radius: 28px;
+      padding: 20px 14px 20px;
+      box-shadow: 0 15px 30px -10px rgba(75, 46, 43, 0.1);
+      text-align: center;
+      transition: 0.2s;
+      border: 1px solid var(--primary-soft);
+    }
+    .food-card:hover {
+      transform: scale(1.02);
+      border-color: var(--primary-light);
+      box-shadow: 0 20px 35px -8px var(--accent-gold);
+    }
+    .food-card img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent-cream);
+      margin-bottom: 16px;
+    }
+    /* item names hidden */
+    .food-card h3 {
+      display: none;
+    }
+    .order-now {
+      background: var(--primary);
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid var(--primary);
+    }
+    .order-now i {
+      font-size: 1rem;
+    }
+    .order-now:hover {
+      background: var(--primary-light);
+      border-color: var(--primary-light);
+    }
+
+    /* reel + insta section */
+    .reel-section {
+      background: var(--primary-soft);
+      border-radius: 60px;
+      padding: 48px 32px;
+      margin: 60px 0;
+    }
+    .reel-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+    }
+    .reel-item {
+      flex: 1 1 280px;
+    }
+    .reel-item iframe {
+      width: 100%;
+      height: 400px;
+      border-radius: 40px;
+      border: 5px solid white;
+      box-shadow: 0 20px 30px -5px var(--accent-gold);
+    }
+    .insta-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 32px;
+    }
+    .insta-grid iframe {
+      width: 100%;
+      max-width: 320px;
+      height: 560px;
+      border-radius: 30px;
+      border: 3px solid white;
+    }
+
+    /* menu images */
+    .menu-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin: 40px 0 20px;
+    }
+    .menu-card {
+      flex: 1 1 280px;
+      max-width: 380px;
+      background: white;
+      border-radius: 36px;
+      padding: 16px;
+      box-shadow: 0 15px 30px var(--primary-soft);
+    }
+    .menu-card img {
+      width: 100%;
+      border-radius: 28px;
+      border: 3px solid var(--accent-gold);
+      height: auto;
+    }
+
+    /* reviews */
+    .review-block {
+      background: white;
+      border-radius: 40px;
+      padding: 32px;
+      box-shadow: 0 20px 30px -12px var(--primary-soft);
+      margin: 48px 0;
+      border-left: 10px solid var(--primary);
+    }
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 12px;
+    }
+    .rating span {
+      color: var(--text-dark);
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+    .review-text {
+      font-size: 1.25rem;
+      font-style: italic;
+      background: var(--primary-soft);
+      padding: 24px;
+      border-radius: 32px;
+    }
+
+    /* contact + map + address */
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin: 40px 0;
+      background: var(--primary-soft);
+      border-radius: 50px;
+      padding: 44px 36px;
+    }
+    .info-col {
+      flex: 2 1 300px;
+    }
+    .map-col {
+      flex: 3 1 400px;
+    }
+    .info-col i {
+      color: var(--primary);
+      width: 32px;
+      font-size: 1.4rem;
+    }
+    .info-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 24px;
+      font-size: 1.1rem;
+    }
+    .hours {
+      background: white;
+      padding: 16px 24px;
+      border-radius: 40px;
+      display: inline-block;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+    .map-col iframe {
+      width: 100%;
+      height: 260px;
+      border-radius: 40px;
+      border: 4px solid white;
+    }
+
+    /* floating buttons */
+    .floating-btns {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 999;
+    }
+    .float-btn {
+      width: 65px;
+      height: 65px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 12px 22px rgba(75,46,43,0.5);
+      transition: 0.15s;
+      border: 3px solid white;
+      text-decoration: none;
+    }
+    .float-btn.whatsapp {
+      background: var(--whatsapp);
+    }
+    .float-btn.instagram {
+      background: #d6249f;
+      background: radial-gradient(circle at 30% 30%, #fdf497, #fd5949, #d6249f);
+    }
+    .float-btn:hover {
+      transform: scale(1.1) translateY(-5px);
+    }
+
+    /* footer */
+    footer {
+      background: var(--primary);
+      color: #f0f0f0;
+      padding: 40px 0;
+      border-radius: 60px 60px 0 0;
+      margin-top: 40px;
+    }
+    .footer-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-logo img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-gold);
+    }
+    .footer-copy {
+      text-align: center;
+      margin-top: 32px;
+      color: #ddc;
+      border-top: 1px solid var(--accent-cream);
+      padding-top: 24px;
+    }
+    /* responsiveness */
+    @media (max-width: 800px) {
+      .navbar { flex-direction: column; gap: 16px; }
+      .nav-menu { flex-wrap: wrap; justify-content: center; gap: 16px; }
+      .hero-content h1 { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- floating buttons -->
+<div class="floating-btns">
+  <a href="https://wa.me/918883921008?text=Hello%20Hangout%20Cafe%2C%20I'd%20like%20to%20order" target="_blank" class="float-btn whatsapp" title="Order on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a href="tel:08883921008" class="float-btn" title="Call now"><i class="fas fa-phone-alt"></i></a>
+  <a href="https://www.instagram.com/hangout_cafe_solapur/" target="_blank" class="float-btn instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+</div>
+
+<!-- header -->
+<div class="container">
+  <header class="navbar">
+    <div class="logo-area">
+      <!-- ⚠️ IMPORTANT: Replace this placeholder URL with your actual logo image URL -->
+      <img class="logo-img" src="https://placehold.co/200x200/4B2E2B/white?text=Hangout+Cafe" alt="Hangout Cafe Logo">
+      <!-- cafe name text removed -->
+    </div>
+    <nav class="nav-menu">
+      <a href="#">Home</a>
+      <a href="#">Menu</a>
+      <a href="#">Popular</a>
+      <a href="#">Reviews</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a href="tel:08883921008" class="call-btn"><i class="fas fa-phone-alt"></i> 08883921008</a>
+      <a href="https://www.instagram.com/hangout_cafe_solapur/" target="_blank" class="insta-header"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+  </header>
+</div>
+
+<main class="container">
+  <!-- hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Best Hangout Cafe in Solapur</h1>
+      <p>Great food, cool vibes, and the perfect place to hang out with friends.</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn-primary"><i class="fas fa-utensils"></i> View Menu</a>
+        <a href="https://www.instagram.com/hangout_cafe_solapur/" target="_blank" class="btn-outline"><i class="fab fa-instagram"></i> Follow on Instagram</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqWcslSmL4ex70vEc-eOhsiQS9759yvYIN3mAEiK_fYc2l--yGL9uDJgLan89Rgbgtc_COLXVR4AR2X-70IU6OzHrxagG8-iiuf1wQ-2AhlbDhJG_u1jGpYMuP5TNrBUeVXQJZB=w243-h174-n-k-no-nu" alt="Cafe vibe">
+    </div>
+  </section>
+
+  <!-- popular items section -->
+  <section>
+    <h2 class="section-title">🔥 Popular Menu Items</h2>
+    <div class="items-grid">
+      <!-- Popular food cards with WhatsApp order buttons -->
+      <div class="food-card">
+        <img src="https://lh3.googleusercontent.com/p/AF1QipPM5f2Fur7Y5tMuVks8GzQt9ccZ3_EQtHeZLMw=w243-h406-n-k-no-nu" alt="Peri Peri Fries">
+        <a href="https://wa.me/918883921008?text=Hello%2C%20I%20would%20like%20to%20order%20Cheesy%20Peri%20Peri%20Fries%20from%20Hangout%20Cafe" target="_blank" class="order-now"><i class="fab fa-whatsapp"></i> Order Now</a>
+      </div>
+      <div class="food-card">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwepiZQgv49ZlE5obMKc-LEUulPImNMIWHSfjmBRzH4rxvHrPos1UOQkQnHVcZS2oSx3l5Mt266jkMGOgM8lt7Ig1YEgYw5JYxB4VmEwMxTl3Xx7stxdOtLOjIYissvCEUakorERn=w243-h406-n-k-no-nu" alt="Brownie Pizza">
+        <a href="https://wa.me/918883921008?text=Hello%2C%20I%20would%20like%20to%20order%20Brownie%20Pizza%20from%20Hangout%20Cafe" target="_blank" class="order-now"><i class="fab fa-whatsapp"></i> Order Now</a>
+      </div>
+      <div class="food-card">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwep1iOAP5NgUgrqsbWbldKP9McpUi_v1gdvDCeAYo3zMQEGSe2uJVWC9ho4jgLV2dfNrGEFzRqCx7m-abzUn6mTQZodg7jFi0tMZt-lnwkbfDU4PqW-rUC2ZPKKZm7hB1Tjrqa_ohw=w243-h244-n-k-no-nu" alt="Loaded Burger">
+        <a href="https://wa.me/918883921008?text=Hello%2C%20I%20would%20like%20to%20order%20Chicken%20Loaded%20Burger%20from%20Hangout%20Cafe" target="_blank" class="order-now"><i class="fab fa-whatsapp"></i> Order Now</a>
+      </div>
+      <div class="food-card">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwepvJWwzn9-gi2ZP52oG-PeIwHAhElnr3tpQP2gSr2e-KsdkEWfej8npTlx_aE1Lp4PqcQi_Fh_DSAAOkZ6mEh9uuCK2itwKU2XbqKR0Bg00ESLGaO2G3Kl1wZpmEi-Tyd5JwJI2AA=w243-h305-n-k-no-nu" alt="Veg Sandwich">
+        <a href="https://wa.me/918883921008?text=Hello%2C%20I%20would%20like%20to%20order%20Veg%20Club%20Sandwich%20from%20Hangout%20Cafe" target="_blank" class="order-now"><i class="fab fa-whatsapp"></i> Order Now</a>
+      </div>
+      <div class="food-card">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqrwIJ7vAcEXN_WYII6eaS_zRA6uAr7lbw9gvsGrolRtc5fzp41bipWcuTP4dh6Kb6OcZN9b5vWvr7D13XLBexpPHNSgGWKtGA_mk-TMRLh7O7PfQ3eJ0AbgfLX64peMScLQ8s=w243-h244-n-k-no-nu" alt="Mojito">
+        <a href="https://wa.me/918883921008?text=Hello%2C%20I%20would%20like%20to%20order%20Mojitos%20from%20Hangout%20Cafe" target="_blank" class="order-now"><i class="fab fa-whatsapp"></i> Order Now</a>
+      </div>
+      <div class="food-card">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwepiZQgv49ZlE5obMKc-LEUulPImNMIWHSfjmBRzH4rxvHrPos1UOQkQnHVcZS2oSx3l5Mt266jkMGOgM8lt7Ig1YEgYw5JYxB4VmEwMxTl3Xx7stxdOtLOjIYissvCEUakorERn=w243-h406-n-k-no-nu" alt="Caramel Shake">
+        <a href="https://wa.me/918883921008?text=Hello%2C%20I%20would%20like%20to%20order%20Caramel%20Popcorn%20Shake%20from%20Hangout%20Cafe" target="_blank" class="order-now"><i class="fab fa-whatsapp"></i> Order Now</a>
+      </div>
+      <div class="food-card">
+        <img src="https://lh3.googleusercontent.com/p/AF1QipPM5f2Fur7Y5tMuVks8GzQt9ccZ3_EQtHeZLMw=w243-h406-n-k-no-nu" alt="Veg Manchurian">
+        <a href="https://wa.me/918883921008?text=Hello%2C%20I%20would%20like%20to%20order%20Veg%20Manchurian%20from%20Hangout%20Cafe" target="_blank" class="order-now"><i class="fab fa-whatsapp"></i> Order Now</a>
+      </div>
+      <div class="food-card">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqWcslSmL4ex70vEc-eOhsiQS9759yvYIN3mAEiK_fYc2l--yGL9uDJgLan89Rgbgtc_COLXVR4AR2X-70IU6OzHrxagG8-iiuf1wQ-2AhlbDhJG_u1jGpYMuP5TNrBUeVXQJZB=w243-h174-n-k-no-nu" alt="Paneer Bowl">
+        <a href="https://wa.me/918883921008?text=Hello%2C%20I%20would%20like%20to%20order%20Paneer%20Makhani%20Bowl%20from%20Hangout%20Cafe" target="_blank" class="order-now"><i class="fab fa-whatsapp"></i> Order Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram reel section -->
+  <section class="reel-section">
+    <h2 class="section-title" style="color:var(--primary);">📸 Cafe reels</h2>
+    <div class="reel-flex">
+      <div class="reel-item">
+        <iframe src="https://www.instagram.com/reel/DJ8jlqNS2y4/embed" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="reel-item">
+        <iframe src="https://www.instagram.com/reel/DOqFN-rjMGa/embed" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- menu images -->
+  <section>
+    <h2 class="section-title">📖 Our Menu</h2>
+    <div class="menu-showcase">
+      <div class="menu-card">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweoKSM1j_oT2_6RNIy6V6HFf-EnR5lZsETBN47r_-LWzRy_cwpOEooHh3SHk0JU1vF7PlEtFw8E5Szv7q8XNILY4snSu04PNE8hZJzyRaMX_XTRoSMVRbpXI33Q3RqQzupB_fQPlPA=w640-h640-n-k-no" alt="Menu 1">
+      </div>
+      <div class="menu-card">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerux_zX2DZIa9NFv1FfARYjESKDRab27riSRBh1PRglOoqSzG3xiWiPuLQP11npKMXiVTTmmkbO0BVWyKrHCf9ZvO8vAKBgiKltNoLLMFmOLUjgCuGOQ8fp62D3qmzhqwZ6Yon4=w640-h640-n-k-no" alt="Menu 2">
+      </div>
+    </div>
+  </section>
+
+  <!-- reviews -->
+  <section class="review-block">
+    <div class="rating">
+      ⭐ 3.8 / 5 <span> · 427 Google reviews</span>
+    </div>
+    <div class="review-text">
+      “Food quality, ambiance and price point everything is good. Must try Cheesy Fries.”
+    </div>
+  </section>
+
+  <!-- contact & map -->
+  <section class="contact-grid">
+    <div class="info-col">
+      <h2 class="section-title" style="margin-top:0;">📍 Visit us</h2>
+      <div class="info-row"><i class="fas fa-map-pin"></i> Plot No 91, Santosh Nagar, Jule Solapur Rd, Opp Patanjali Mega Store, Konark Nagar, Jule Solapur – 413004</div>
+      <div class="info-row"><i class="fas fa-phone-alt"></i> 08883921008</div>
+      <div class="info-row"><i class="fab fa-instagram"></i> @hangout_cafe_solapur</div>
+      <div class="hours"><i class="far fa-clock"></i> Open daily · 10 AM – 11 PM</div>
+    </div>
+    <div class="map-col">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3803.2412505130594!2d75.902362!3d17.611057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5dbf0b53da48b%3A0x7a55dbdf3c29401e!2sHangout%20Cafe!5e0!3m2!1sen!2sin!4v1713456789012" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+</main>
+
+<!-- footer -->
+<footer>
+  <div class="container footer-flex">
+    <div class="footer-logo">
+      <!-- ⚠️ Use the same logo image URL here as in the header -->
+      <img src="https://placehold.co/200x200/4B2E2B/white?text=Hangout+Cafe" alt="Hangout Cafe Logo">
+    </div>
+    <div>📍 Plot 91, Jule Solapur<br>📞 08883921008<br>📷 @hangout_cafe_solapur</div>
+    <div>⭐ 3.8 (427 reviews)<br>🕒 10am–11pm</div>
+  </div>
+  <div class="footer-copy container">
+    © Hangout Cafe — best cafe in Solapur
+  </div>
+</footer>
+
+<!-- SEO keywords -->
+<div style="display:none;">cafe in Solapur best cafe in Solapur hangout cafe Solapur best fries in Solapur cafe near Jule Solapur</div>
+</body>
+</html>
